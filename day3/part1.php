@@ -10,25 +10,14 @@ foreach ($lines as $y => $line) {
   }
 }
 
-function traverse($right, $down) {
-  global $terrain;
-  global $width;
-  $trees = 0;
-  $pos = 0;
-  for ($y = 0; $y < count($terrain); $y += $down) {
-    if ($terrain[$y][$pos % $width] == '#') {
-      $trees++;
-    }
-    $pos += $right;
+$trees = 0;
+$pos = 0;
+for ($y = 0; $y < count($terrain); $y ++) {
+  if ($terrain[$y][$pos % $width] == '#') {
+    $trees++;
   }
-  return $trees;
+  $pos += 3;
 }
+var_dump($trees);
 
-var_dump(
-  traverse(1, 1) *
-  traverse(3, 1) *
-  traverse(5, 1) *
-  traverse(7, 1) *
-  traverse(1, 2)
-);
 
